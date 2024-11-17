@@ -1,8 +1,7 @@
-
-import {  FaStar, FaEye } from "react-icons/fa";
+import { FaStar, FaEye } from "react-icons/fa";
 
 const NewsCard = (props = {}) => {
-    const { news } = props || {};
+  const { news } = props || {};
   const {
     title,
     details,
@@ -14,24 +13,8 @@ const NewsCard = (props = {}) => {
   } = news;
 
   return (
-    <div className="card w-full bg-base-100 shadow-xl">
-      {/* Card Header */}
-      <figure>
-        <img
-          src={thumbnail_url}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
-      </figure>
+    <div className="card  bg-base-100 shadow-2xl">
       <div className="card-body">
-        {/* Trending or Today's Pick */}
-        {others_info.is_trending && (
-          <div className="badge badge-secondary">Trending</div>
-        )}
-        {others_info.is_todays_pick && (
-          <div className="badge badge-primary">Today's Pick</div>
-        )}
-
         {/* Title */}
         <h2 className="card-title text-lg font-bold">{title}</h2>
 
@@ -47,10 +30,28 @@ const NewsCard = (props = {}) => {
             <p className="text-xs text-gray-500">{author.published_date}</p>
           </div>
         </div>
+      </div>
+      {/* Card Header */}
+      <figure>
+        <img
+          src={thumbnail_url}
+          alt={title}
+          className="w-full h-[800px] object-cover"
+        />
+      </figure>
+      <div className="card-body">
+        {/* Trending or Today's Pick */}
+        {others_info.is_trending && (
+          <div className="badge badge-secondary">Trending</div>
+        )}
+        {others_info.is_todays_pick && (
+          <div className="badge badge-primary">Today's Pick</div>
+        )}
 
         {/* Card Details */}
         <p className="text-sm text-gray-600 mt-2 line-clamp-3">
-          {details} <span className="text-blue-500 cursor-pointer">Read More</span>
+          {details}{" "}
+          <span className="text-blue-500 cursor-pointer">Read More</span>
         </p>
 
         {/* Footer */}
