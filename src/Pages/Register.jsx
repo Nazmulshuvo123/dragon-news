@@ -1,12 +1,39 @@
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 
+
 const Register = () => {
+  const {createNewUser, setUser} = useContext(AuthContext);
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    // get form data
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const photo = form.get("url");
+    const email = form.get("email");
+    const password = form.get("password");
+
+    console.log({name, photo, email, password});
+
+    createNewUser(email, password)
+    .then((result) =>{
+      const user = result.user;
+      setUser(user)
+      console.log(user)
+    })
+    .catch(error =>{
+      console.log("Error", error.massage)
+    })
+  }
+
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col">
           <div className="card bg-base-100 w-full max-w-lg p-10 shadow-2xl">
-            <form className="card-body">
+            
+            <form onSubmit={handleSubmit} className="card-body">
               <h1 className="text-3xl pb font-semibold text-[#403F3F]">
                 Register your account
               </h1>
@@ -78,6 +105,8 @@ const Register = () => {
                 </button>
               </div>
             </form>
+
+            <p className="text-center font-semibold text-[#706F6F]">Already Have An Account ? <Link to="/auth/login" ><span className="text-red-500 font-semibold">Login</span></Link></p>
           </div>
         </div>
       </div>
