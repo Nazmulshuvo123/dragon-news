@@ -20,7 +20,15 @@ const Navbar = () => {
             </div>
             <div className="login">
                <div className="flex items-center gap-3">
-                  <img src={userIcon} alt="" /> 
+                {
+                    user && user?.email?
+                     (<div>
+                        <img className="w-16 h-16 rounded-full" src={user.photoURL} alt="" />
+                        <p>{user.displayName}</p>
+                    </div>)
+                    : <img src={userIcon} alt="" /> 
+                }
+                 
 
                   {
                     user && user?.email? ( 
