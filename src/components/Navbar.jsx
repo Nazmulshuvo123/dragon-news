@@ -2,15 +2,16 @@ import { Link } from "react-router-dom";
 import userIcon from "../assets/user.png"
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { GiButtonFinger } from "react-icons/gi";
 
 const Navbar = () => {
     
-    const {user} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
 
     return (
         <div className="flex justify-between items-center">
 
-            <div className="div">{user && user.name}</div>
+            <div className="div">{user && user.email}</div>
             
             <div className="nav space-x-5">
                 <Link to='/'>Home</Link>
@@ -20,7 +21,13 @@ const Navbar = () => {
             <div className="login">
                <div className="flex items-center gap-3">
                   <img src={userIcon} alt="" /> 
-                  <Link to= "/auth/login" className="btn w-32 btn-neutral text-white font-bold rounded-none border-none">Login</Link>
+
+                  {
+                    user && user?.email? ( 
+                    <button onClick={logOut} className="btn w-32 btn-neutral text-white font-bold rounded-none border-none">Log Out</button> ):
+                    ( <Link to= "/auth/login" className="btn w-32 btn-neutral text-white font-bold rounded-none border-none">Login</Link>)
+                  }
+                 
                </div>
                 
 
