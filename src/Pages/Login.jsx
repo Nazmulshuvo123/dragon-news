@@ -7,7 +7,7 @@ const Login = () => {
   const [error, setError] = useState({})
   const location = useLocation();
   const navigate = useNavigate()
-  console.log(location)
+  // console.log(location)
   const handleLogin = (e) =>{
 
       e.preventDefault();
@@ -15,12 +15,12 @@ const Login = () => {
       const email = form.email.value;
       const password = form.password.value;
 
-      console.log({email, password});
+      // console.log({email, password});
 
       userLogin(email, password)
       .then((result)=>{
         const user = result.user;
-        console.log(user)
+        // console.log(user)
         setUser(user)
         navigate(location?.state? location.state: '/')
       })

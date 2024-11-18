@@ -21,7 +21,7 @@ const Register = () => {
     const email = form.get("email");
     const password = form.get("password");
 
-    console.log({name, photo, email, password});
+    // console.log({name, photo, email, password});
 
     createNewUser(email, password)
     .then((result) =>{
@@ -33,10 +33,10 @@ const Register = () => {
       navigate("/")
     })
     .catch(err =>{
-      console.log(err)
+      // console.log(err)
     })
     .catch(error =>{
-      console.log("Error", error.massage)
+      // console.log("Error", error.massage)
     })
   }
 
@@ -108,22 +108,10 @@ const Register = () => {
                   required
                 />
               </div>
-              <div>
-                <div className="form-control">
-                  <label className="label cursor-pointer">
-                   
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                    />
-                     <span className="">Accept Terms And Condition</span>
-                  </label>
-                </div>
-              </div>
               <div className="form-control mt-6">
-                <button className="btn btn-neutral rounded-none">
+                <Link to="/" className="btn btn-neutral rounded-none">
                   Register
-                </button>
+                </Link>
               </div>
             </form>
 
