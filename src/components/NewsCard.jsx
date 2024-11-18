@@ -1,4 +1,5 @@
 import { FaStar, FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewsCard = (props = {}) => {
   const { news } = props || {};
@@ -50,9 +51,10 @@ const NewsCard = (props = {}) => {
 
         {/* Card Details */}
         <p className="text-sm text-gray-600 mt-2 line-clamp-3">
-          {details}{" "}
-          <span className="text-blue-500 cursor-pointer">Read More</span>
+          {details}
+         
         </p>
+        <Link to={`/news/${news._id}`} className="text-blue-500 cursor-pointer">Read More</Link>
 
         {/* Footer */}
         <div className="card-actions justify-between items-center mt-4">

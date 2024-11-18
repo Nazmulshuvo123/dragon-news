@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import userIcon from "../assets/user.png"
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { GiButtonFinger } from "react-icons/gi";
+
 
 const Navbar = () => {
     
